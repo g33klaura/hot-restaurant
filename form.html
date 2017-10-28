@@ -80,6 +80,11 @@
                 email: $("#email").val().trim(),
                 user_id: $("#user_id").val().trim()
             };
+            $.post("/api/reserve", current)
+                .done(function(data) {
+                    console.log(data);
+                    alert("Adding a new reserve");
+                });
             console.log(current);
         })
     </script>
