@@ -31,3 +31,18 @@ var waiting = [
         email: 'john@public.me'
     }   
 ];
+
+//populate dummy data
+dummies(current);
+dummies(waiting);
+
+debugger;
+
+//make dummy files
+function dummies(obj) {
+    for (var i = 0; i < obj.length; i++) {
+        return json(obj[i]);
+      }
+}
+
+
