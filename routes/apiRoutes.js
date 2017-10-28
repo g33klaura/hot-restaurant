@@ -1,3 +1,6 @@
+var current = require('../data/tableData');
+var waiting = require('../data/waitlistData');
+
 app.get("/api/tables", function(req, res) {
     res.json(current);
   });
