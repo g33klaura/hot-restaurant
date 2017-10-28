@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Tables Page</title>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="page-header">
+            <h1>Orlando Italian Food</h1>
+        </div>
+
+        <div class="jumbotron text-center">
+            <div class="container">
+                <h1><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>Hot Restaurant</h1>
+                <h2>Current Tables and Wait List</h2>
+
+                    <br>
+                    
+                    <button id="reservation" class="btn btn-danger btn-lg">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Make Reservation
+                    </button>
+
+                    <!-- Make this a home button -->
+                    <button id="table" class="btn btn-default btn-lg" href="index.html" role="button" type="submit">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                    </button>
+
+            </div>
+        </div>
+
+        <!-- Empty panels and divs here -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Current Reservations</h3>
+            </div>
+                <div class="panel-body">Panel content
+                
+                    <div id="current">
+                        <!-- JSON for current reservations renders here -->
+                    </div>
+                </div>
+        </div>
+
+        <!-- Empty panel for waitlist -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            <h3 class="panel-title">Waiting List</h3>
+            </div>
+                <div class="panel-body">Panel content
+                
+                    <div id="waiting">
+                        <!-- JSON for waitlist renders here -->
+                    </div>
+                </div>
+        </div>
+
+
+    <script type="text/javascript">
+        
+    $(document).ready(function() {
+      
+      $.get("/api/current", function(data) {
+        console.log(data);
+        if (data) {
+          for (var i = 0; i < data.length; i++) {
+            $("#current")
+            .append("<div class=row><div class=col-lg-4 unique><span class=labe label-primary>" + [i+1] + "</span><p class=unique_id>" + data[i].unique_id + "</p></div></div>");
+            
+          }
+          
+        }
+        else {
+          $("#name").text("The force is not strong with this one. Your character was not found.");
+          $("#stats").hide();
+        }
+      });
+
+      $.get("/api/waiting", function(data) {
+        console.log(data);
+        if (data) {
+          for (var i = 0; i < data.length; i++) {
+            $("#waiting")
+            .append("<div class=row><div class=col-lg-4 unique><span class=labe label-primary>" + [i+1] + "</span><p class=unique_id>" + data[i].unique_id + "</p></div></div>");
+            
+          }
+          
+        }
+        else {
+          $("#name").text("The force is not strong with this one. Your character was not found.");
+          $("#stats").hide();
+        }
+      });
+    });
+
+  </script>
+
+
+    <!-- Control Panel links -->
+    <a id="API_table" href="tables.html">Api Table List</a>
+    <span>|</span>
+    <a id="API_waiting" href="waiting.html">Api Waiting List</a>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
