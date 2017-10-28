@@ -1,21 +1,13 @@
 app.get("/tables", function(req, res) {
-    res.sendFile(path.join(__dirname, "tables.html"));
+    res.sendFile(path.join(__dirname, "../public/tables.html"));
+    
+  });
+
+  app.get("/index", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
     
   });
   
   
   
-  app.post("/api/reserve", function(req, res) {
   
-    var newRes = req.body;
-    
-    if(current.length > 5) {
-      waiting.push(newRes);
-      res.json(newRes);
-    }
-  
-    else {
-      current.push(newRes);
-      res.json(newRes);
-    }
-  });

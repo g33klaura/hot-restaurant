@@ -11,31 +11,11 @@ var PORT = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//initial objects:
-var current = [
-   
-    {
-        id:'1',
-        name: 'Jane Q Public',
-        phone: '407-555-5555',
-        email: 'jane@public.me'
-    }   
-];
 
-var waiting = [
-   
-    {
-        id:'5',
-        name: 'John Q Public',
-        phone: '407-555-5556',
-        email: 'john@public.me'
-    }   
-];
 
-//populate dummy data
-dummies(current);
-dummies(waiting);
-
+app.listen(PORT,function(){
+    console.log('App listening on port: ' + PORT)
+});
 
 
 
