@@ -63,6 +63,47 @@
                 </div>
         </div>
 
+
+    <script type="text/javascript">
+        
+    $(document).ready(function() {
+      
+      $.get("/api/current", function(data) {
+        console.log(data);
+        if (data) {
+          for (var i = 0; i < data.length; i++) {
+            $("#current")
+            .append("<div class=row><div class=col-lg-4 unique><span class=labe label-primary>" + [i+1] + "</span><p class=unique_id>" + data[i].unique_id + "</p></div></div>");
+            
+          }
+          
+        }
+        else {
+          $("#name").text("The force is not strong with this one. Your character was not found.");
+          $("#stats").hide();
+        }
+      });
+
+      $.get("/api/waiting", function(data) {
+        console.log(data);
+        if (data) {
+          for (var i = 0; i < data.length; i++) {
+            $("#waiting")
+            .append("<div class=row><div class=col-lg-4 unique><span class=labe label-primary>" + [i+1] + "</span><p class=unique_id>" + data[i].unique_id + "</p></div></div>");
+            
+          }
+          
+        }
+        else {
+          $("#name").text("The force is not strong with this one. Your character was not found.");
+          $("#stats").hide();
+        }
+      });
+    });
+
+  </script>
+
+
     <!-- Control Panel links -->
     <a id="API_table" href="tables.html">Api Table List</a>
     <span>|</span>
